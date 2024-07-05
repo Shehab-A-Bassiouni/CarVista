@@ -1,0 +1,47 @@
+<style>
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+</style>
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="../../assets/logo-blue.png"
+            class="img-fluid" alt="Logo image">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+          <h1 class="font-monospace text-primary">Car Vista</h1>
+
+          <form class="login-form" #loginForm="ngForm" (submit)="Login()">
+            <div *ngIf ="errorMessage" class="error-message">
+              {{ errorMessage }}
+            </div>
+            <mat-form-field class="login-full-width">
+              <mat-label>Username</mat-label>
+              <input [(ngModel)]="loginobj.username" type="string" matInput [formControl]="userNameFormControl" [errorStateMatcher]="matcher"
+                    >
+              @if (userNameFormControl.hasError('required')) {
+                <mat-error>Username is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+
+
+            <mat-form-field class="login-full-width">
+              <mat-label>Password</mat-label>
+              <input [(ngModel)]="loginobj.password" type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
+                >
+              @if (passwordFormControl.hasError('required')) {
+                <mat-error>Password is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+            <button mat-flat-button type="submit" [disabled]="!loginForm.valid" class="w-25 custom-btn p-3 mt-3">Login</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>

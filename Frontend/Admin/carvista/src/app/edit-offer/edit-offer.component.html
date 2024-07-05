@@ -1,0 +1,41 @@
+<form class="offer-form" (ngSubmit)="formSubmitted()" #offerForm="ngForm">
+    <mat-form-field class="offer-full-width d-block">
+        <mat-label>Offer ID</mat-label>
+        <input #model type="number" matInput [formControl]="idFormControl">
+    </mat-form-field>
+
+    <mat-form-field class="offer-full-width">
+        <mat-label>Offer Type</mat-label>
+        <mat-select name="type" matNativeControl required [formControl]="typeFormControl">
+            <mat-option value="Percent">Percent</mat-option>
+        </mat-select>
+        <mat-error *ngIf="typeFormControl.hasError('required')">
+            Offer Type is required
+        </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="offer-full-width">
+        <mat-label>Percentage</mat-label>
+        <input #percent type="number" matInput [formControl]="percentFormControl" required>
+        <mat-error *ngIf="percentFormControl.hasError('required')">Model is <strong>required</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="offer-full-width">
+        <mat-label>Expiration Date</mat-label>
+        <input #expration type="date" matInput [formControl]="expirationFormControl" required>
+        <mat-error *ngIf="expirationFormControl.hasError('required')">Model is <strong>required</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="offer-full-width">
+        <mat-label>Description</mat-label>
+        <input #desc type="text" matInput [formControl]="descriptionFormControl" required>
+        <mat-error *ngIf="descriptionFormControl.hasError('required')">Model is <strong>required</strong></mat-error>
+      </mat-form-field>
+
+   
+
+    <div class="col-12 text-center mt-5">
+        <button mat-flat-button type="submit" [disabled]="!offerForm.form.valid" class="w-25 custom-btn p-3">Edit Offer</button>
+    </div>
+</form>

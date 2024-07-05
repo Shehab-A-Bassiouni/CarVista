@@ -1,0 +1,40 @@
+<div class="completed-bookings">
+  <h2>Bookings</h2>
+  <ng-container *ngIf="completedBookings.data.length > 0; else noBookings">
+    <mat-card class="mat-elevation-z8" *ngFor="let booking of completedBookings.data">
+      <div class="row g-0">
+        <div class="col-md-4" (click)="goToCarDetails(booking.carId)">
+          <img src="../../assets/logo-blue.png" alt="Car Image" class="img-fluid rounded-start car-image">
+        </div>
+        <div class="col-md-8">
+          <mat-card-content>
+            <mat-card-header>
+              <mat-card-title class="status" [ngClass]="{
+                  'text-success': booking.state === 'Completed',
+                  'text-danger': booking.state === 'Cancelled',
+                  'text-warning': booking.state === 'Pending',
+                  'text-info': booking.state === 'Delivered'
+                }">
+                {{ booking.state }}
+              </mat-card-title>
+            </mat-card-header>
+            <div class="data">
+              <p class="date">Booking Date: {{ formatDate(booking.date) }}</p>
+              <p>Date From: {{ formatDate(booking.dateFrom) }}</p>
+              <p>Date To: {{ formatDate(booking.dateTo) }}</p>
+              <p>Payment Type: {{ booking.paymentType }}</p>
+              <p>Car Plate Number: {{ booking.carPlateNumber }}</p>
+              <p>Year Model: {{ booking.yearModel }}</p>
+            </div>
+            <mat-card-actions *ngIf="booking.state === 'Completed'">
+              <button mat-button color="primary" class="btn-review" (click)="addReview(booking.id)">Add Review</button>
+            </mat-card-actions>
+          </mat-card-content>
+        </div>
+      </div>
+    </mat-card>
+  </ng-container>
+  <ng-template #noBookings>
+    <p>No bookings found.</p>
+  </ng-template>
+</div>

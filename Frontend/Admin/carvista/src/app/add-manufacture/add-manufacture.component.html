@@ -1,0 +1,20 @@
+<form class="manf-form container" (ngSubmit)="formSubmitted()" #manf="ngForm">
+  <mat-form-field class="manf-full-width">
+    <mat-label>Name</mat-label>
+    <input #name type="text" matInput [formControl]="nameFormControl" [errorStateMatcher]="matcher" required>
+    <mat-error *ngIf="nameFormControl.hasError('required')">Name is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="manf-full-width">
+    <mat-label>Description</mat-label>
+    <textarea #desc matInput [formControl]="descFormControl" [errorStateMatcher]="matcher" required></textarea>
+    <mat-error *ngIf="descFormControl.hasError('required')">Description is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <input #logo type="file" (change)="onFileSelected($event)" required class="form-control mt-4" accept="image/*">
+  <mat-error *ngIf="fileError">{{ fileError }}</mat-error>
+
+  <div class="col-12 text-center mt-5">
+    <button mat-flat-button type="submit" [disabled]="!manf.valid">Add Manufacturer</button>
+  </div>
+</form>

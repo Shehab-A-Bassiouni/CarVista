@@ -1,0 +1,66 @@
+<style>
+  .error-message {
+    color: red;
+    margin-bottom: 12px;
+    margin-left: 10px;
+  }
+  mat-error {
+    margin-left: 10px;
+    font-size : 15px;
+    color :red;
+  }
+</style>
+
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="../../assets/logo-blue.png" class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <div>
+          <h1 class="text-primary font-monospace fw-bolder">Car Vista</h1>
+          <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div *ngIf="errorMessage" class="error-message">
+              {{ errorMessage }}
+            </div>
+         
+            <!-- Username input -->
+            <div class="form-outline mb-4">
+              <input [(ngModel)]="loginobj.username" name="username" type="text" id="username" class="form-control form-control-lg"
+                placeholder="Enter a valid user name" required matInput [formControl]="userNameFormControl"
+                [errorStateMatcher]="matcher" (focus)="clearError('username')" (blur)="validateField('username')" />
+              <mat-error *ngIf="userNameFormControl.hasError('required') && showUsernameError">
+                Username is required
+              </mat-error>
+            </div>
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <input [(ngModel)]="loginobj.password" name="password" type="password" id="password" class="form-control form-control-lg"
+                placeholder="Enter password" required matInput [formControl]="passwordFormControl"
+                [errorStateMatcher]="matcher" (focus)="clearError('password')" (blur)="validateField('password')" />
+              <mat-error *ngIf="passwordFormControl.hasError('required') && showPasswordError">
+                Password is required
+              </mat-error>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Checkbox -->
+              <div class="form-check mb-0">
+                <input class="form-check-input me-2" type="checkbox" value="" id="rememberMe" />
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+              </div>
+              <a routerLink="/ForgetPassword" class="text-body">Forgot password?</a>
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                Login
+              </button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a (click)="isRegister()"  routerLink="/Register" class="link-danger">Register now</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

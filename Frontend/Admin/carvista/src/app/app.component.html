@@ -1,0 +1,123 @@
+@if(isLoading() | async){
+  <app-loading-screen/>
+}
+@else{
+  
+    <div class="overflow-hidden" *ngIf="!loggedIn()">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="d-flex justify-content-center align-items-center vh-100">
+            <div class="login-style">
+              <app-login (isLogged)="loginSuccess()"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="loggedIn()">
+    <div class="carvista-container" [class.carvista-is-mobile]="mobileQuery.matches">
+      <mat-toolbar color="primary" class="carvista-toolbar d-flex bg-primary" >
+        <button mat-icon-button  (click)="snav.toggle()"><mat-icon class="text-white">menu</mat-icon></button>
+        <div class="d-flex mx-3 avatar-container pointer" routerLink="">
+          <img src="./../assets/logo-blue.png" class="img-fluid avatar rounded-circle">
+          <h1 class="carvista-app-name align-content-center text-white">Car Vista</h1>
+        </div>
+        <div class="header-text pointer" routerLink="">
+          <h1 class="font-monospace">Dashboard</h1>
+        </div>
+        <div class="profile pointer avatar-container">
+          <button class="avatar" mat-button [matMenuTriggerFor]="belowMenu"> <img src="./../assets/mona.png" class="img-fluid rounded-circle border border-2 "></button>
+          <mat-menu #belowMenu="matMenu" yPosition="below" class="mt-2 rounded rounded-5">
+            <button class="rounded rounded-5" mat-menu-item (click)="loggedIn.set(false)">Logout</button>
+          </mat-menu>
+        </div>
+  
+      </mat-toolbar>
+  
+      <mat-sidenav-container class="carvista-sidenav-container"
+                            [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="'over'"
+                    [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+          <mat-nav-list>
+  
+            <mat-accordion>
+              <mat-expansion-panel hideToggle class="mb-2">
+                <mat-expansion-panel-header >
+                  <div class="d-flex mt-3 ">
+                    <mat-icon class="me-2" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                    <p>Cars Management</p>
+                  </div>
+  
+                </mat-expansion-panel-header>
+  
+                  <div class="d-flex btn btn-primary  ms-5 mb-2 mt-2" routerLink="/Display/Cars">
+                    <mat-icon class="me-2" aria-hidden="false" aria-label="Example home icon" fontIcon="home" ></mat-icon>
+                    <p>Manage Cars</p>
+                  </div>
+  
+                  <div class="d-flex btn btn-primary  ms-5 mb-2" routerLink="Display/Manufactures">
+                    <mat-icon class="me-2" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                    <p>Manage Manufacture</p>
+                  </div>
+  
+  
+              </mat-expansion-panel>
+
+
+              <mat-expansion-panel hideToggle class="mb-2">
+                <mat-expansion-panel-header >
+                  <div class="d-flex mt-3 ">
+                    <mat-icon class="me-2" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                    <p>Bookings Management</p>
+                  </div>
+  
+                </mat-expansion-panel-header>
+  
+                  <div class="d-flex btn btn-primary  ms-5 mb-2 mt-2" routerLink="Display/Bookings">
+                    <mat-icon class="me-2" aria-hidden="false" aria-label="Example home icon" fontIcon="home" ></mat-icon>
+                    <p>Manage Bookings</p>
+                  </div>
+  
+  
+              </mat-expansion-panel>
+
+              <mat-expansion-panel hideToggle class="mb-2">
+                <mat-expansion-panel-header >
+                  <div class="d-flex mt-3 ">
+                    <mat-icon class="me-2" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                    <p>Offers Management</p>
+                  </div>
+  
+                </mat-expansion-panel-header>
+
+                <div class="d-flex btn btn-primary  ms-5 mb-2 mt-2" routerLink="/Display/Offers">
+                  <mat-icon class="me-2" aria-hidden="false" aria-label="Example home icon" fontIcon="home" ></mat-icon>
+                  <p>Manage Offers</p>
+                </div>
+  
+              </mat-expansion-panel>
+  
+            </mat-accordion>
+  
+          </mat-nav-list>
+        </mat-sidenav>
+  
+        <mat-sidenav-content>
+  <div class="m-5">
+    <router-outlet></router-outlet>
+      </div>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+  
+      <footer class="bg-primary text-center align-content-center text-white">
+        <h6 class="mt-2">Copyrights &#64; ITI Team 2024</h6>
+      </footer>
+    </div>
+  </div>
+  }
+
+
+
+
+

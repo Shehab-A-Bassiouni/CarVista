@@ -1,0 +1,78 @@
+.completed-bookings {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Add space between cards */
+  }
+  
+  .mat-card {
+    position: relative;
+    border-radius: 12px; 
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .car-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+  
+  .btn-review {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    color: white;
+    background-color: aliceblue; /* Blue button color */
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .text-success {
+    color: #28a745; /* Green color for completed status */
+  }
+  
+  .text-danger {
+    color: #dc3545; /* Red color for canceled status */
+  }
+  
+  .text-warning {
+    color: #ffc107; /* Yellow color for pending status */
+  }
+  
+  .text-info {
+    color: #17a2b8; /* Blue color for delivered status */
+  }
+  
+  .status {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .date {
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .data {
+    margin-left: 18px;
+    margin-top: 25px;
+  }
+  
+  .mat-card-content {
+    position: relative;
+  }
+  
+  .mat-card-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  

@@ -1,0 +1,43 @@
+<!-- rent-car.component.html -->
+
+<div class="container">
+    <h2>Booking</h2>
+  
+    <form (ngSubmit)="createBooking()" class="form">
+      <div class="form-group">
+        <label class="label" for="dateFrom">Date From</label>
+        <input type="date" id="dateFrom" class="input" [(ngModel)]="bookingData.dateFrom" name="dateFrom" required (change)="calculatePrice()">
+      </div>
+  
+      <div class="form-group">
+        <label class="label" for="dateTo">Date To</label>
+        <input type="date" id="dateTo" class="input" [(ngModel)]="bookingData.dateTo" name="dateTo" required (change)="calculatePrice()">
+      </div>
+  
+      <div class="form-group">
+        <label class="label" for="paymentType">Payment Type</label>
+        <select id="paymentType" class="input" [(ngModel)]="bookingData.paymentType" name="paymentType" required>
+          <option value="cash" (click)="paymentType('cash')">Cash</option>
+          <option value="credit" (click)="paymentType('credit')">Credit</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="label" for="olderPrice">Price before Discount</label>
+        <input type="text" id="olderPrice" class="input" [(ngModel)]="olderPrice" name="olderPrice" disabled>
+    </div>
+
+    <div class="form-group">
+        <label class="label" for="currentPrice">Current Price</label>
+        <input type="text" id="currentPrice" class="input" [(ngModel)]="currentPrice" name="currentPrice" disabled>
+    </div>
+      <br> 
+      <button type="submit" class="btn">Rent</button>
+    </form>
+    
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+
+  </div>
+  

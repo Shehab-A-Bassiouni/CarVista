@@ -1,0 +1,44 @@
+<form class="offer-form" #offerForm="ngForm" (ngSubmit)="formSubmitted()">
+    <mat-form-field class="offer-full-width">
+      <mat-label>Offer Type</mat-label>
+      <!-- <input #type type="text" matInput [(ngModel)]="offerType" name="type" required> -->
+      <mat-select #type="ngModel" [(ngModel)]="offerType" name="type" required>
+        <mat-option value="Percent">Percent</mat-option>
+        <!-- <mat-option value="Amount">Amount</mat-option> -->
+      </mat-select>
+      <mat-error *ngIf="offerForm.controls['type'].invalid && (offerForm.controls['type'].dirty || offerForm.controls['type'].touched)">
+        Offer Type is required
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field class="offer-full-width">
+      <mat-label>Percentage</mat-label>
+      <input #percent type="number" matInput [(ngModel)]="offerPercent" name="percent" required>
+      <mat-error *ngIf="offerForm.controls['percent'].invalid && (offerForm.controls['percent'].dirty || offerForm.controls['percent'].touched)">
+        Percentage is required
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field class="offer-full-width">
+      <mat-label>Expiration Date</mat-label>
+      <input #expiration type="date" matInput [(ngModel)]="offerExpiration" name="expiration" required>
+      <mat-error *ngIf="offerForm.controls['expiration'].invalid && (offerForm.controls['expiration'].dirty || offerForm.controls['expiration'].touched)">
+        Expiration Date is required
+      </mat-error>
+    </mat-form-field>
+
+   
+  
+    <mat-form-field class="offer-full-width">
+      <mat-label>Description</mat-label>
+      <textarea #description matInput [(ngModel)]="offerDescription" name="description" required></textarea>
+      <mat-error *ngIf="offerForm.controls['description'].invalid && (offerForm.controls['description'].dirty || offerForm.controls['description'].touched)">
+        Description is required
+      </mat-error>
+    </mat-form-field>
+  
+    <div class="col-12 text-center mt-5">
+      <button mat-flat-button type="submit" [disabled]="!offerForm.form.valid" class="w-25 custom-btn p-3">Add Offer</button>
+    </div>
+  </form>
+  

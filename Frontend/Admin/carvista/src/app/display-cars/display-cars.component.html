@@ -1,0 +1,81 @@
+
+
+<!-- Button to add a car -->
+<div class="mb-3">
+  <button mat-raised-button routerLink="/Add/Car">Add Car</button>
+</div>
+
+<!-- Angular Material Form Field and Table -->
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{element.id}}</td>
+  </ng-container>
+
+  <ng-container class="car-image-container" matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef>Image</th>
+    <td class="car-image-container" mat-cell *matCellDef="let element"><img src="http://localhost:5210/uploads/{{element.image}}" class=" car-img rounded rounded-5"></td>
+  </ng-container>
+
+  <ng-container matColumnDef="manufacturer">
+    <th mat-header-cell *matHeaderCellDef>Manufacturer</th>
+    <td mat-cell *matCellDef="let element">{{element.manufacturer}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="model">
+    <th mat-header-cell *matHeaderCellDef>Model</th>
+    <td mat-cell *matCellDef="let element">{{element.model}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="color">
+    <th mat-header-cell *matHeaderCellDef>Color</th>
+    <td mat-cell *matCellDef="let element">{{element.color}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="plateNumber">
+    <th mat-header-cell *matHeaderCellDef>Plate Number</th>
+    <td mat-cell *matCellDef="let element">{{element.plateNumber}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef>Edit</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-flat-button routerLink="/Edit/Car" (click)="EditCar(element)">Edit</button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef>Delete</th>
+    <td mat-cell *matCellDef="let element">
+      <button type="button"  class="btn btn-danger" mat-flat-button (click)="openDialog('0ms', '0ms' , element)">Delete</button>
+    </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="details">
+    <th mat-header-cell *matHeaderCellDef>Full Details</th>
+    <td mat-cell *matCellDef="let element">
+      <button type="button"  class="btn btn-danger" mat-flat-button routerLink="/Display/Cars/Details" (click)="ViewDetails(element)">Details</button>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <!-- Row shown when there is no matching data. -->
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="6">No data matching the filter "{{input.value}}"</td>
+  </tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+</mat-paginator>
+
+

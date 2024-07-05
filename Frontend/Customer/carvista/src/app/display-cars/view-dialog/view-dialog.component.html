@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{car.manufacturer}} - {{car.model}}</h2>
+<mat-dialog-content class="mat-typography">
+  <h3><span class="fw-bolder">Plat Number:</span>{{car.plateNumber}}</h3>
+  <h3><span class="fw-bolder">Chassis Number:</span>{{car.chassisNumber}}</h3>
+  <h3><span class="fw-bolder">Color:</span>{{car.color}}</h3>
+  <h3><span class="fw-bolder">Year Model:</span>{{car.yearModel}}</h3>
+  <h3><span class="fw-bolder">Fuel Type:</span>{{car.fuelType}}</h3>
+  <h3><span class="fw-bolder">Price Per Day:</span>{{car.pricePerDay}}</h3>
+  <h3><span class="fw-bolder">Odometer:</span>{{car.odometer}}</h3>
+  <h3><span class="fw-bolder">Fuel Bar:</span>{{car.fuelBar}}</h3>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+</mat-dialog-actions>

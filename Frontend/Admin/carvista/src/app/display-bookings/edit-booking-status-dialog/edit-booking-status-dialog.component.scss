@@ -1,0 +1,88 @@
+:host {
+  display: block;
+  padding: 24px;
+  max-width: 400px;
+  margin: auto;
+  background-color: #fff;
+}
+
+.mat-dialog-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #1976d2;
+  margin-bottom: 24px;
+}
+
+.mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+button {
+  min-width: 100px;
+}
+
+button[mat-button] {
+  color: #1976d2;
+}
+
+button[mat-button]:hover {
+  background-color: rgba(25, 118, 210, 0.1);
+}
+
+button[mat-button][color="primary"] {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+button[mat-button][color="primary"]:hover {
+  background-color: #155a9f;
+}
+
+.custom-select .mat-form-field-wrapper {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.custom-select .mat-form-field-flex {
+  padding: 8px;
+}
+
+.custom-select .mat-select {
+  background-color: transparent;
+}
+
+.custom-select .mat-select-placeholder {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.custom-select .mat-select-value {
+  color: #1976d2;
+  font-weight: bold;
+}
+
+.custom-select .mat-select-arrow {
+  display: none; /* Hide the arrow icon */
+}
+
+.custom-select .mat-option {
+  color: #1976d2;
+  font-weight: bold;
+}
+
+.custom-select .mat-option:hover {
+  background-color: rgba(25, 118, 210, 0.1);
+}

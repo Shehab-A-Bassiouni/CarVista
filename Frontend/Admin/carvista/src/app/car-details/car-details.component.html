@@ -1,0 +1,72 @@
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <div>
+        <img src="http://localhost:5210/uploads/{{car().image}}">
+    </div>
+
+    <div class="text-center">
+        <h1 class="fw-bolder font-monospace"><mark>{{car().manufacturer}} - {{car().model}} - {{car().yearModel}} - {{car().color}}</mark> </h1>
+    </div>
+    <div class="text-center mt-5">
+        <h3>{{car().description}}</h3>
+    </div>
+
+<div class="w-75 mt-5">
+    <table class="table table-primary  table-hover fs-3 ">
+        <thead>
+        </thead>
+       <tbody>
+
+        <tr>
+            <td>Fuel Type</td>
+            <td>{{car().fuelType}}</td>
+        </tr>
+        <tr>
+            <td>Price Per Day</td>
+            <td>{{car().pricePerDay}}</td>
+        </tr>
+
+        <tr>
+            <td>Plate Number</td>
+            <td>{{car().plateNumber}}</td>
+        </tr>
+
+
+        <tr>
+            <td>Chassis Number</td>
+            <td>{{car().chassisNumber}}</td>
+        </tr>
+
+
+        <tr>
+            <td>Fuel Bar</td>
+            <td>{{car().fuelBar}}</td>
+        </tr>
+
+
+        <tr>
+            <td>Odometer</td>
+            <td>{{car().odometer}}</td>
+        </tr>
+       </tbody>
+
+    </table>
+</div>
+
+<div class="mt-5 fs-3" >
+  <c-carousel [interval]="0" [dark]="true" [wrap]="false" class="custom-slider rounded rounded-5">
+    <c-carousel-indicators></c-carousel-indicators>
+    <c-carousel-inner class="custom-size">
+      <c-carousel-item *ngFor="let slide of slides" >
+        <div class="border border-5 rounded rounded-5 custom-div ">
+          <p class="mt-4">{{slide.name}}</p>
+          <p>{{slide.stars}}</p>
+          <p>{{slide.review}}</p>
+        </div>
+      </c-carousel-item>
+    </c-carousel-inner>
+    <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+    <c-carousel-control [routerLink]  caption="Next" direction="next"></c-carousel-control>
+  </c-carousel>
+</div>
+   
+</div>

@@ -1,0 +1,20 @@
+<h1 mat-dialog-title class="dialog-title">Add Review</h1>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field appearance="outline" class="comment-field">
+        <mat-label>Comment</mat-label>
+        <textarea matInput [(ngModel)]="comment" name="comment" rows="4" required></textarea>
+        <mat-error *ngIf="commentError">Comment is required.</mat-error>
+    </mat-form-field>      
+    <div class="rating">
+      <span *ngFor="let star of stars; let i = index"
+            (click)="rateStar(i)"
+            class="star"
+            [class.filled]="i < rate">&#9733;</span>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-button class="cancel-button" (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" class="submit-button" (click)="onSubmit()">Submit</button>
+</div>

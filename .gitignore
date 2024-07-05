@@ -1,0 +1,26 @@
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+carvista/.vs/
+
+
+carvista/DataLayer/obj/
+carvista/DataLayer/bin/
+
+carvista/Services/obj/
+carvista/Services/bin/
+
+carvista/BusinessLayer/obj/
+carvista/BusinessLayer/bin/
+
+
+carvista/application.pl/obj/
+carvista/application.pl/bin/ 
+*/bin
+*/obj
+/carvista/.vs/carvista/v17/TestStore/0/000.testlog
+/carvista/.vs/carvista/v17/TestStore/0/testlog.manifest
+**/bin/
+**/obj/
+**/.vs/
+

@@ -1,0 +1,27 @@
+<form class="car-form container manf-form " (ngSubmit)="formSubmitted()" #carForm="ngForm">
+
+  <mat-form-field class="manf-full-width d-block">
+    <mat-label>Mnufacturer ID</mat-label>
+    <input  type="number" matInput [formControl]="idFormControl">
+  </mat-form-field>
+  
+  <mat-form-field class="manf-full-width d-block">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput [formControl]="nameFormControl" required>
+    <mat-error *ngIf="nameFormControl.hasError('required')">Odometer is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+ 
+  <mat-form-field class="manf-full-width d-block">
+    <mat-label>Description</mat-label>
+    <textarea  matInput [formControl]="descFormControl" required></textarea>
+    <mat-error *ngIf="descFormControl.hasError('required')">Description is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <input #logo type="file" (change)="onFileSelected($event)" required class="form-control mt-4 manf-full-width" accept="image/*">
+  <mat-error *ngIf="fileError">{{ fileError }}</mat-error>
+  
+  <div class="col-12 text-center mt-5">
+    <button mat-flat-button type="submit" [disabled]="!carForm.valid" class="custom-btn">Edit Mnufacturer</button>
+  </div>
+</form>

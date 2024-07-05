@@ -1,0 +1,81 @@
+<form class="car-form" (ngSubmit)="formSubmitted()" #carForm="ngForm">
+  <mat-form-field class="car-full-width">
+    <mat-label>Choose Manufacturer</mat-label>
+    <mat-select #manf [formControl]="manfFormControl" [errorStateMatcher]="matcher">
+      <mat-option *ngFor="let manf of manfList()" [value]="manf.id">{{manf.name}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="manfFormControl.hasError('required')">You must make a selection</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="car-full-width">
+    <mat-label>Model</mat-label>
+    <input #model type="text" matInput [formControl]="modelFormControl" required>
+    <mat-error *ngIf="modelFormControl.hasError('required')">Model is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="car-full-width">
+    <mat-label>Year Model</mat-label>
+    <input #year type="number" matInput [formControl]="yearFormControl" required>
+    <mat-error *ngIf="yearFormControl.hasError('required')">Year Model is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="car-full-width">
+    <mat-label>Plate Number</mat-label>
+    <input #plate type="text" matInput [formControl]="plateFormControl" required>
+    <mat-error *ngIf="plateFormControl.hasError('required')">Plate Number is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="car-full-width">
+    <mat-label>Chassis Number</mat-label>
+    <input #chassis type="text" matInput [formControl]="chassisFormControl" required>
+    <mat-error *ngIf="chassisFormControl.hasError('required')">Chassis Number is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="car-full-width">
+    <mat-label>Color</mat-label>
+    <input #color type="text" matInput [formControl]="colorFormControl" required>
+    <mat-error *ngIf="colorFormControl.hasError('required')">Color is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="car-full-width">
+    <mat-label>Choose Fuel Type</mat-label>
+    <mat-select #fuelType [formControl]="fuelTypeFormControl" [errorStateMatcher]="matcher">
+      <mat-option value="Gasoline">Gasoline</mat-option>
+      <mat-option value="Diesel">Diesel</mat-option>
+      <mat-option value="Electricity">Electricity</mat-option>
+      <mat-option value="Natural Gas">Natural Gas</mat-option>
+    </mat-select>
+    <mat-error *ngIf="fuelTypeFormControl.hasError('required')">You must make a selection</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="car-full-width">
+    <mat-label>Fuel Bar</mat-label>
+    <input #fuelBar type="number" matInput [formControl]="fuelBarFormControl" required>
+    <mat-error *ngIf="fuelBarFormControl.hasError('required')">Fuel Bar is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="car-full-width">
+    <mat-label>Odometer</mat-label>
+    <input #odo type="number" matInput [formControl]="odoFormControl" required>
+    <mat-error *ngIf="odoFormControl.hasError('required')">Odometer is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="car-full-width">
+    <mat-label>Price Per Day</mat-label>
+    <input #price type="number" matInput [formControl]="priceFormControl" required>
+    <mat-error *ngIf="priceFormControl.hasError('required')">Price Per Day is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="car-full-width">
+    <mat-label>Description</mat-label>
+    <textarea #desc matInput [formControl]="descFormControl" required></textarea>
+    <mat-error *ngIf="descFormControl.hasError('required')">Description is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <input #img type="file" (change)="onFileSelected($event)" required class="form-control car-full-width" accept="image/*">
+  <mat-error *ngIf="fileError">{{ fileError }}</mat-error>
+
+  <div class="col-12 text-center mt-5">
+    <button mat-flat-button type="submit" [disabled]="!carForm.valid" class="w-25 custom-btn p-3">Add Car</button>
+  </div>
+</form>

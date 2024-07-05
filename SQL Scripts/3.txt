@@ -1,0 +1,67 @@
+-- Create a temporary table to hold the manufacturer mapping
+CREATE TABLE #ManufacturerMapping (
+    ManufacturerName NVARCHAR(MAX),
+    ManufacturerId INT
+);
+
+-- Insert the mapping data
+INSERT INTO #ManufacturerMapping (ManufacturerName, ManufacturerId)
+VALUES
+('Toyota', 1),
+('Honda', 2),
+('Ford', 3),
+('Chevrolet', 4),
+('Nissan', 5),
+('BMW', 6),
+('Mercedes', 7),
+('Audi', 8),
+('Volkswagen', 9),
+('Kia', 10),
+('Hyundai', 11),
+('Mazda', 12),
+('Subaru', 13),
+('Tesla', 14),
+('Lexus', 15),
+('Infiniti', 16),
+('Acura', 17),
+('Cadillac', 18),
+('Buick', 19),
+('Genesis', 20),
+('Jaguar', 21),
+('Alfa Romeo', 22),
+('Volvo', 23),
+('Lincoln', 24),
+('Porsche', 25),
+('Maserati', 26),
+('Bentley', 27),
+('Rolls-Royce', 28),
+('Aston Martin', 29),
+('Lamborghini', 30),
+('Ferrari', 31),
+('McLaren', 32),
+('Bugatti', 33),
+('Pagani', 34),
+('Koenigsegg', 35),
+('Rimac', 36),
+('Ariel', 37),
+('Caterham', 38),
+('Lotus', 39),
+('Morgan', 40),
+('TVR', 41),
+('Ginetta', 42),
+('Wiesmann', 43),
+('Zenvo', 44),
+('Gumpert', 45),
+('Tramontana', 46),
+('Panoz', 47),
+('Noble', 48),
+('SSC', 49);
+
+-- Update the CarDetails table with the correct ManufacturerId
+UPDATE cd
+SET cd.ManufacturerId = mm.ManufacturerId
+FROM Cars cd
+INNER JOIN #ManufacturerMapping mm ON cd.Model LIKE '%' + mm.ManufacturerName + '%';
+
+-- Drop the temporary table
+DROP TABLE #ManufacturerMapping;

@@ -1,0 +1,17 @@
+<div class="container">
+  <h3>Car: <mark>BMW</mark> </h3>
+  <h3>Price Per Day: <mark>5 EGP</mark> </h3>
+  <h3>Total Cost:  <mark>{{totalCost()}} EGP</mark> </h3>
+
+<hr>
+<form class="form-control w-25 mx-auto mt-2 ">
+    <label class="">Days Needed</label>
+    <input #days type="number" class="form-control  mt-2" (keydown)="CalcCost()">
+    <input type="submit" class="btn btn-success  mt-2 " value="Pay Now" routerLink="/PayNow">
+    <input type="submit" class="btn btn-primary  mt-2 ms-2 " value="Pay Later" >
+
+</form>
+
+
+
+</div>

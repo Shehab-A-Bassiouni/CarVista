@@ -1,0 +1,20 @@
+  <div class="d-flex gap-5 flex-wrap justify-content-center ">
+
+  @for(car of cars() ; track car.id){
+    <div class="card card-style text-center" style="width: 18rem;">
+      <img src="http://localhost:5210/uploads/{{car.image}}" class="img-fluid card-img-top mx-auto mt-2" alt="...">
+      <div class="card-body div-style">
+        <h5 class="card-title div-style"> {{car.manufacturer}} - {{car.model}}</h5>
+        <p class="card-text div-style">{{car.description}}</p>
+        <div class="text-center div-style">
+          <button mat-flat-button  class="main-buttons rent-btn" (click)="rentCar(car.id)">Rent</button>
+          <button  mat-flat-button class="main-buttons" (click)="carView(car)"  routerLink="/Details">View</button>
+          <button class="star-button ms-3" (click)="toggleStar(car)">
+            <i class="fa-solid fa-star fa-lg" [ngClass]="{'fa-yellow': car.isStarred}"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+    
+</div>

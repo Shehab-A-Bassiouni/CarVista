@@ -1,0 +1,22 @@
+<div class="d-flex gap-5 flex-wrap">
+
+    @for(wish of wishes() ; track wish.id){
+      <div class="card" style="width: 18rem;">
+        <img src="../../assets/car.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"> {{wish.manufacturer}} - {{wish.model}}</h5>
+          <p class="card-text">{{wish.description}}</p>
+          <div class="text-center">
+            <button mat-flat-button  class="main-buttons rent-btn">Rent</button>
+            <button  mat-flat-button class="main-buttons" (click)="openDialog(wish)" >View</button>
+            <button class="star-button ms-3" (click)="toggleStar(wish)">
+              <i class="fa-solid fa-star fa-lg" [ngClass]="{'fa-yellow': !wish.isStarred}"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+      
+  
+      
+  </div>

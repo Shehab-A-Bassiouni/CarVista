@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Edit Booking Status</h2>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" class="custom-select">
+    <mat-label>Select Status</mat-label>
+    <mat-select [(ngModel)]="selectedStatus">
+      <mat-option *ngFor="let status of statusOptions" [value]="status.label">
+        {{ status.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()" cdkFocusInitial>Save</button>
+</div>

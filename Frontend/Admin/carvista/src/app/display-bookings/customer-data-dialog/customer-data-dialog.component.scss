@@ -1,0 +1,30 @@
+/* Styles for CustomerDataDialogComponent */
+
+:host {
+    display: block;
+    padding: 24px;
+  }
+  
+  h2 {
+    margin-bottom: 16px;
+    font-size: 1.5em;
+  }
+  
+  p {
+    margin-bottom: 8px;
+  }
+  
+  .mat-dialog-content {
+    padding-bottom: 16px;
+  }
+  
+  .mat-dialog-actions {
+    justify-content: flex-end;
+    margin-top: 16px;
+  }
+  
+  button {
+    margin-left: 8px;
+  }
+  
+  
